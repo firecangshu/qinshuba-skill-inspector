@@ -3,7 +3,7 @@
 > 隋唐门神化身 SkillHub 上架前质检员。丢给我一个 skill，73 项检查 + 5 大维度评分，30 秒告诉你能不能上架、哪里要改。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.5.1-blue.svg)](https://github.com/qinshuba-skill-inspector/releases)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/qinshuba-skill-inspector/releases)
 [![SkillHub](https://img.shields.io/badge/SkillHub-pending-orange.svg)](https://skillhub.cloud.tencent.com)
 
 ---
@@ -34,7 +34,7 @@
 
 ```bash
 # 解压安装包到 skills 目录
-unzip skill-inspector-秦叔宝-v1.0.5.1.zip -d ~/.workbuddy/skills/skill-inspector/
+unzip skill-inspector-秦叔宝-v1.2.0.zip -d ~/.workbuddy/skills/skill-inspector/
 ```
 
 ### 2. 触发质检

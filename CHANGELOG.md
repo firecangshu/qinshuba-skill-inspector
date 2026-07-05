@@ -5,6 +5,35 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 本项目遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.0] - 2026-07-05
+
+### 🆕 新增
+- 📋 §4.2.1「上架打包文件清单」对比表
+  - ✅ 白名单 4 项（SKILL.md / README.md / CHANGELOG.md / CONTRIBUTING.md）
+  - ❌ 黑名单 8 项（.git / .gitignore / LICENSE / .DS_Store / node_modules / Thumbs.db / *.tmp 等）
+  - 🔍 跨平台打包自检命令（Linux/macOS + Windows PowerShell）
+
+### 🔧 强化
+- ⚠️ D04「无垃圾文件」→「无平台拒收文件」
+  - 判定标准扩充：从系统垃圾文件扩展到 SkillHub 平台不允许的文件类型
+  - 严重度 P2 → **P0**（任一黑名单文件出现在 zip 中即一票否决）
+  - 扣分 -0.1 → **-0.5**
+
+### 📌 背景
+- v1.0.5.1 → v1.1.0 升级时，作者上传 SkillHub 因 zip 内含 `.gitignore` 和 `LICENSE` 被连续驳回 2 次
+- 本规则即为该实战教训沉淀，确保后续 skill 作者一次性通过文件类型审核
+
+## [1.1.0] - 2026-07-05
+
+### 修复
+- 🔧 frontmatter `version` 字段同步至最新（原落后 5 个版本）
+- 🔧 README 徽章与安装命令版本号同步
+- 🔧 版本号回归标准 semver 三段式（X.Y.Z），符合自家 F04 规则
+
+### 变更
+- 本次为版本号规范化迭代，无功能性变更
+- 后续版本统一遵循 semver 三段式递增
+
 ## [1.0.5.1] - 2026-07-03
 
 ### 提升（自检优化）
