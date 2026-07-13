@@ -1,16 +1,16 @@
 # 🛡️ 秦叔宝 · Skill 质检员
 
-> 隋唐门神化身 SkillHub 上架前质检员。丢给我一个 skill，73 项检查 + 5 大维度评分，30 秒告诉你能不能上架、哪里要改。
+> 隋唐门神化身 SkillHub 上架前质检员。丢给我一个 skill，79 项检查 + 5 大维度评分，30 秒告诉你能不能上架、哪里要改。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/qinshuba-skill-inspector/releases)
+[![Version](https://img.shields.io/badge/version-2.3.0-blue.svg)](https://github.com/qinshuba-skill-inspector/releases)
 [![SkillHub](https://img.shields.io/badge/SkillHub-pending-orange.svg)](https://skillhub.cloud.tencent.com)
 
 ---
 
 ## 📖 这是什么
 
-**秦叔宝（qinshuba-skill-inspector）** 是一个 SkillHub 平台的上架前质检 skill。它模拟 SkillHub 官方审核员视角，对一个待上架的 skill 进行**全维度质量体检**，输出带分值、带问题清单、带优化建议的结构化报告。
+**秦叔宝（qinshubao）** 是一个 SkillHub 平台的上架前质检 skill。它模拟 SkillHub 官方审核员视角，对一个待上架的 skill 进行**全维度质量体检**，输出带分值、带问题清单、带优化建议的结构化报告。
 
 **为什么叫"秦叔宝"？** 取自《说唐》《隋唐演义》门神——尉迟恭与秦叔宝，寓意**守门把关、忠义执锐**，象征质检员严守 SkillHub 上架门槛。谐音"勤守宝"：勤恳守护 quality 之宝。
 
@@ -18,9 +18,10 @@
 
 ## ✨ 核心能力
 
-- 🛡️ **秦叔宝守门**：73 项规则 + 5 维度评分，发现问题不放过
+- 🛡️ **秦叔宝守门**：79 项规则 + 5 维度评分，发现问题不放过
 - 📊 **TRACE 五维评分**：可信任度 25% / 可靠性 20% / 适用性 20% / 规范性 15% / 有效性 20%
-- 🔍 **73 项检查规则**：封装合规 22 + 安全检测 8 + Deep 扩展 6 + 五维 37
+- 🔍 **79 项检查规则**：封装合规 22 + 安全检测 8 + Deep 扩展 6 + 五维 37 + 平台 P 6
+- 🌐 **平台兼容性 P 维度（v2.0）**：Phase 0.5 确认目标平台后，按 SkillHub / WorkBuddy / Lenovo / GitHub / Claude Code 规范做 PC01-PC06 检查，最终分 × 平台系数，评分与实际发布成功率挂钩
 - 🚨 **P0 一票否决**：安全红线直接判 0 分，帮你避开常见驳回
 - ⏱️ **三档评测深度**：Quick 1 分钟 / Standard 3 分钟 / Deep 5 分钟
 - 📝 **上架表单填写建议**：质检通过自动生成 6 字段吸睛版建议
@@ -34,7 +35,7 @@
 
 ```bash
 # 解压安装包到 skills 目录
-unzip skill-inspector-秦叔宝-v1.2.0.zip -d ~/.workbuddy/skills/skill-inspector/
+unzip qinshubao-2.3.0.zip -d ~/.workbuddy/skills/qinshubao/
 ```
 
 ### 2. 触发质检
@@ -48,7 +49,7 @@ unzip skill-inspector-秦叔宝-v1.2.0.zip -d ~/.workbuddy/skills/skill-inspecto
 | `skill质检` | 中文泛指 |
 | `检查skill` | 中文动宾 |
 | `上架前检查` | 上架场景 |
-| `skill-inspector` | 英文标识 |
+| `qinshubao` | 英文标识 |
 | `TRACE评测` | 模型术语 |
 | `评估skill质量` | 评估类 |
 | `这个skill能上架吗` | 二元判定 |
@@ -129,23 +130,22 @@ unzip skill-inspector-秦叔宝-v1.2.0.zip -d ~/.workbuddy/skills/skill-inspecto
 ## 📂 项目结构
 
 ```
-qinshuba-skill-inspector/
+qinshubao/
+├── SKILL.md               # 秦叔宝核心 skill（986 行）
 ├── README.md              # 本文件
-├── LICENSE                # MIT 协议
 ├── CHANGELOG.md           # 变更记录
 ├── CONTRIBUTING.md        # 贡献指南
-├── .gitignore             # Git 忽略规则
-├── SKILL.md               # 秦叔宝核心 skill（826 行）
-├── docs/
-│   ├── architecture.md    # 架构设计
-│   ├── scoring.md         # 评分体系详解
-│   └── publishing.md      # SkillHub 上架指南
-├── examples/
-│   ├── example-golden-idea.md    # 实战案例：金点子
-│   └── example-skill-fixer.md   # 实战案例：skill 修复
-└── tests/
-    └── test-rules.md      # 73 项检查项测试
+├── LICENSE                # MIT 协议
+├── .gitignore             # Git 忽略规则（打包时剔除）
+├── references/
+│   └── platforms.md       # 各平台规范参考表（SkillHub/WorkBuddy/Lenovo/GitHub/Claude Code）
+└── scripts/
+    ├── platform_check.py  # 平台兼容性检查脚本（PC01-PC06，纯标准库）
+    ├── self_audit.py      # 模块 0 自动化自检脚本（F/D/P 共 22 项，纯标准库）
+    └── package.py         # 多平台打包脚本（生成 SkillHub 嵌套 / WorkBuddy-Lenovo 根目录 zip）
 ```
+
+> 注：`.git/`、`.gitignore`、`LICENSE` 等文件在上传 SkillHub 时按 §4.2.1 D04 黑名单剔除，不进入发布包。
 
 ---
 
@@ -208,7 +208,7 @@ trigger:
 ## 📮 联系方式
 
 - GitHub Issues: 提交问题
-- SkillHub: 搜索"秦叔宝"或"skill-inspector"
+- SkillHub: 搜索"秦叔宝"或"qinshubao"
 
 ---
 
